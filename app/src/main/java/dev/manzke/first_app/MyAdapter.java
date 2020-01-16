@@ -1,11 +1,13 @@
 package dev.manzke.first_app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,7 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return productList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textViewTitle, textViewShortDesc, textViewRating, textViewPrice;
         ImageView imageView;
@@ -61,6 +63,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             textViewRating = itemView.findViewById(R.id.textViewRating);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
             imageView = itemView.findViewById(R.id.imageView);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(mCtx, "Elemento " + getAdapterPosition() + " clicado.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(v.getContext(), DetailActivity.class); //implementation ongoing
         }
     }
 }
