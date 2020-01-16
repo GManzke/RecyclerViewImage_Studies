@@ -248,5 +248,7 @@ public class MainActivity extends AppCompatActivity {
 
         MyAdapter adapter = new MyAdapter(this, productList);
         recyclerView.setAdapter(adapter);
+
+
     }
 }
